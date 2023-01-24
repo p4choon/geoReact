@@ -1,8 +1,12 @@
 import './App.css'
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+//import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import Header from "./Layout/Header";
+import LoginRegister from "./auth/LoginRegister";
+import { UserContext } from './userContext';
+import { useState } from 'react';
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -34,10 +38,22 @@ import './index.css'
 //   )
 // }
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <LoginRegister />
-  
-)
+export default function App() {
+  // difere`cnai entre emprar i no emprar state
 
+  let [authToken, setAuthToken] = useState("");
 
-export default App
+  return (
+    <>
+      <UserContext.Provider value={{ authToken, setAuthToken }}>
+        {authToken ? (
+          <>
+            <Header/>
+          </>
+        ) : (
+          <LoginRegister />
+        )}
+      </UserContext.Provider>
+    </>
+  );
+}

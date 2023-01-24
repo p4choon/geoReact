@@ -8,7 +8,7 @@ export default function Register({ setCanvi }) {
   const handleChange = (e) => {
     e.preventDefault();
 
-    setFormulari({
+    setFormulari({  
       ...formulari,
       [e.target.name]: e.target.value
     });
@@ -27,6 +27,35 @@ export default function Register({ setCanvi }) {
         "/" +
         password2
     );
+
+    if (password2 !== password) {
+      alert("Els passwords han de coincidir");
+      return false;
+    }
+
+    fetch("https://backend.insjoaquimmir.cat/api/register", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      // Si els noms i les variables coincideix, podem simplificar
+      body: JSON.stringify({ name, email, password })
+    })
+      .then((data) => data.json())
+      .then((resposta) => {
+        console.log(resposta);
+        if (resposta.success === true) {
+          alert(resposta.authToken);
+        }
+      })
+      .catch((data) => {
+        console.log(data);
+        alert("Catchch");
+      });
+
+      alert("He enviat les Dades:  " + email + "/" + password);
+
   };
 
 
@@ -38,11 +67,11 @@ export default function Register({ setCanvi }) {
             <input type="email" name="email" placeholder="Correo electr&oacute;nico" onChange={handleChange}></input><br/>
             <input type="password" name="password" placeholder="Contrase&ntilde;a" onChange={handleChange}></input><br/>
             <input type="password" name="password2" placeholder="Repite la Contrase&ntilde;a" onChange={handleChange}></input><br/>
-            <button class="btn btn-primary btn-block btn-large" onClick={(e) => {handleRegister(e);}}>Register</button>
+            <button className="btn btn-primary btn-block btn-large" onClick={(e) => {handleRegister(e);}}>Register</button>
             <br></br>
-            <button class="btn btn-primary btn-block btn-large" type="reset">Limpiar</button>
+            <button className="btn btn-primary btn-block btn-large" type="reset">Limpiar</button>
             <br></br>
-            <button class="btn btn-primary btn-block btn-large" onClick={() => {setCanvi(true);}}>Canvia a login</button>
+            <button className="btn btn-primary btn-block btn-large" onClick={() => {setCanvi(true);}}>Canvia a login</button>
         </form>
     </div>
   )

@@ -1,10 +1,9 @@
 import './Login.css'
 import { useState } from "react";
 
-
 export default function Login({ setCanvi }) {
 
-  let [name, setName] = useState("");
+  let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
   const sendLogin = (e) => {
@@ -15,11 +14,11 @@ export default function Login({ setCanvi }) {
     // Enviam dades a l'aPI i recollim resultat
     fetch("https://backend.insjoaquimmir.cat/api/login", {
       headers: {
-        Accept: "application/json",
+        Accept: "application/json",   
         "Content-Type": "application/json"
       },
       method: "POST",
-      body: JSON.stringify({ email: email, password: password })
+      body: JSON.stringify({ email: email, password: password})  
     })
       .then((data) => data.json())
       .then((resposta) => {
@@ -34,18 +33,18 @@ export default function Login({ setCanvi }) {
       });
 
 
-    alert("Dades enviades:  " + name + "/" + password);
+    alert("Dades enviades:  " + email + "/" + password);
   };
 
   return (
-    <div class="login">
+    <div className="login">
       <h1>Login</h1>
       <form method="post">
-        <input type="text" name="name" placeholder="Nombre" required="required" onChange={(e) => {setName(e.target.value)}}/>
+        <input type="email" name="email" placeholder="Correo electr&oacute;nico" onChange={(e) => {setEmail(e.target.value)}}/>
         <input type="password" name="password" placeholder="Password" required="required" onChange={(e) => {setPassword(e.target.value)}}/>
-        <button type="submit" class="btn btn-primary btn-block btn-large" onClick={(e) => {sendLogin(e)}}>Login</button>
+        <button type="submit" className="btn btn-primary btn-block btn-large" onClick={(e) => {sendLogin(e)}}>Login</button>
         <br/>
-        <button class="btn btn-primary btn-block btn-large" onClick={() => {setCanvi(false);}}>Canvia a Register</button>
+        <button className="btn btn-primary btn-block btn-large" onClick={() => {setCanvi(false);}}>Canvia a Register</button>
       </form>
     </div>
   )
