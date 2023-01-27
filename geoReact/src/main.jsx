@@ -1,9 +1,15 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './auth/LoginRegister'
+import App from './App'
 import './index.css'
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <App />
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-)
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+

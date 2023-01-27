@@ -1,10 +1,13 @@
 import './Login.css'
-import { useState } from "react";
+import React from "react";
+import { useState , useContext } from "react";
+import { UserContext } from '../userContext';
 
 export default function Login({ setCanvi }) {
 
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
+  let {authToken, setAuthToken} = useContext(UserContext);
 
   const sendLogin = (e) => {
     e.preventDefault();
@@ -25,6 +28,7 @@ export default function Login({ setCanvi }) {
         console.log(resposta);
         if (resposta.success === true) {
           alert(resposta.authToken);
+          setAuthToken(resposta.authToken);
         }
       })
       .catch((data) => {

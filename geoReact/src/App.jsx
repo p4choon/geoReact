@@ -1,12 +1,15 @@
 import './App.css'
 import React from 'react'
 //import ReactDOM from 'react-dom/client'
-import App from './App'
 import './index.css'
 import Header from "./Layout/Header";
 import LoginRegister from "./auth/LoginRegister";
 import { UserContext } from './userContext';
 import { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
+import NotFound from "./NotFound";
+import About from "./About";
+
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -49,6 +52,11 @@ export default function App() {
         {authToken ? (
           <>
             <Header/>
+            <Routes>
+              <Route path="*" element={<NotFound />} />
+              <Route path="/" element={<About />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
           </>
         ) : (
           <LoginRegister />

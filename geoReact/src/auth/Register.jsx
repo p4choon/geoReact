@@ -1,9 +1,12 @@
 import './Register.css'
-import { useState } from "react";
+import React from "react";
+import { useState , useContext } from "react";
+import { UserContext } from '../userContext';
 
 export default function Register({ setCanvi }) {
 
   let [formulari, setFormulari] = useState({});
+  let {authToken, setAuthToken} = useContext(UserContext);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -17,6 +20,7 @@ export default function Register({ setCanvi }) {
     e.preventDefault();
 
     let { name, password, password2, email } = formulari;
+
     alert(
       "He enviat les Dades:  " +
         name +
@@ -47,6 +51,7 @@ export default function Register({ setCanvi }) {
         console.log(resposta);
         if (resposta.success === true) {
           alert(resposta.authToken);
+          setAuthToken(resposta.authToken);
         }
       })
       .catch((data) => {
