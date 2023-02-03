@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../userContext";
 import { Link } from "react-router-dom";
 import {useState} from "react";
+import PlaceMenu from "../Places/PlaceMenu";
 
 export default function Header() {
   let { authToken, setAuthToken } = useContext(UserContext);
@@ -66,7 +67,11 @@ export default function Header() {
         <Link to="/places">Cosess </Link>
         <Link to="/posts">Enlloc </Link>
         <Link to="/about">About </Link>
+        
         Token: <strong>{authToken}</strong>
+
+        <PlaceMenu/>
+
         <p>{nom}</p>
         <p>{ roles.map ((v)=> (<span key={v}> {v} </span>))}</p>
         <button type="submit" className="btn btn-primary btn-block btn-large" onClick={(e) => {logout(e)}}>Logout</button>
