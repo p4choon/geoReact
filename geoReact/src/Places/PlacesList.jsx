@@ -45,21 +45,21 @@ const PlacesList = () => {
         <table>
             <thead>
                 <tr>
-                    <td scope="col">ID</td>
-                    <td scope="col">Body</td>
-                    <td scope="col">File</td>
-                    <td scope="col">Latitude</td>
-                    <td scope="col">Longitude</td>
-                    <td scope="col">Visibility</td>
-                    <td scope="col">Author</td>
-                    <td scope="col">Created</td>
-                    <td scope="col">Updated</td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Body</th>
+                    <th scope="col">File</th>
+                    <th scope="col">Latitude</th>
+                    <th scope="col">Longitude</th>
+                    <th scope="col">Visibility</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Updated</th>
                 </tr>
             </thead>
             <tbody>
                 {places.map((place) => (
 
-                    <div key={place.id}> {<PlaceList place={place} />} </div>
+                    <tr key={place.id}> <PlaceList place={place} /> </tr>
 
                 ))} 
             </tbody>
