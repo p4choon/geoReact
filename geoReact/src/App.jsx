@@ -49,15 +49,11 @@ export default function App() {
               <Route path="/places/edit/:id" element={ <PlaceEdit/> } />
               <Route path="/places/grid" element={ <PlacesGrid />}  />
               <Route path="/places/list" element={ <PlacesList/> } />
-              <Route path="/places/grid" element={ <PlaceGrid />}  />
-              <Route path="/places/list" element={ <PlaceList/> } />
               <Route path="/posts/:id" element={ <Post/> } />
               <Route path="/posts/add" element={ <PostAdd/> } />
               <Route path="/posts/edit/:id" element={ <PostEdit/> } />
               <Route path="/posts/grid" element={ <PostsGrid />}  />
               <Route path="/posts/list" element={ <PostsList/> } />
-              <Route path="/posts/grid" element={ <PostGrid />}  />
-              <Route path="/posts/list" element={ <PostList/> } />
             </Routes>
             <Footer/>
           </>
