@@ -16,16 +16,20 @@ import PlaceEdit from "./Places/PlaceEdit";
 import PlaceGrid from "./Places/PlaceGrid";
 import PlaceList from "./Places/PlaceList";
 import PlacesGrid from "./Places/PlacesGrid";
+import PlacesList from "./Places/PlacesList";
 
 
 export default function App() {
   // difere`cnai entre emprar i no emprar state
 
+
+  let [usuari, setUsuari] = useState("");
+
   let [authToken, setAuthToken] = useState("");
 
   return (
     <>
-      <UserContext.Provider value={{ authToken, setAuthToken }}>
+      <UserContext.Provider value= { { usuari, setUsuari,authToken,setAuthToken }}>
         {authToken ? (
           <>
             <Header/>
@@ -37,9 +41,9 @@ export default function App() {
               <Route path="/places/add" element={ <PlaceAdd/> } />
               <Route path="/places/edit/:id" element={ <PlaceEdit/> } />
               <Route path="/places/grid" element={ <PlacesGrid />}  />
+              <Route path="/places/list" element={ <PlacesList/> } />
               <Route path="/places/grid" element={ <PlaceGrid />}  />
               <Route path="/places/list" element={ <PlaceList/> } />
-              
             </Routes>
             <Footer/>
           </>

@@ -28,6 +28,7 @@ export default function Login({ setCanvi }) {
         console.log(resposta);
         if (resposta.success === true) {
           alert(resposta.authToken);
+          setEmail(resposta.email);
           setAuthToken(resposta.authToken);
         }
       })

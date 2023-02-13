@@ -9,10 +9,7 @@ const PlacesGrid = () => {
   let [places, setPlaces] = useState([]);
   let [error, setError] = useState("");
   let { authToken, setAuthToken } = useContext(UserContext);
-
-
-
-
+  
   const getPlaces = async () => {
     try {
       const data = await fetch("https://backend.insjoaquimmir.cat/api/places", {

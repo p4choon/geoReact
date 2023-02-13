@@ -1,6 +1,27 @@
-import React from "react";
+import React from 'react'
+import { UserContext } from '../userContext';
+import { useContext } from 'react';
 
-export default function PlaceList() {
-    return <h1>Places list</h1>;
-}
+const PlaceGrid = ({place}) => {
   
+  return (
+    <>
+        <div>
+            <table class="table">
+                
+                <tbody>
+                    
+                    <td>{place.name}</td>
+                    <td>{place.description}</td>
+                    <td>{place.longitude}</td>
+                    <td>{place.latitude}</td>
+                    <td>{place.author.name}</td>
+                    <td>{place.favourites_count}</td>
+                    
+                </tbody>
+            </table>
+        </div>
+    </>
+  )
+}
+export default PlaceGrid
